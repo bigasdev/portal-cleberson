@@ -31,7 +31,6 @@ function start() {
                     portalSound.play();
                     changeNether();
                 }
-                // position and rotation now contain vector and quaternion in world space.
             };
         })(),
     });
