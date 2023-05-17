@@ -1,11 +1,14 @@
 //Carregando o asset de som:
 var portalSound = new Audio("portal.wav");
 
-//Funcao pra mudar a posicao da camera
-function changePos(pos) {
-    document
-        .getElementById("camera")
-        .setAttribute("position", { x: pos.x, y: pos.y, z: pos.z });
+//Variaveis e funcao pra alterar o estado do nether
+var nether = false;
+const netherEntity = document.querySelector("#nether-entity");
+
+function changeNether() {
+    nether = true;
+    console.log(netherEntity);
+    netherEntity.setAttribute("visible", nether);
 }
 
 function start() {
@@ -19,14 +22,14 @@ function start() {
             var quaternion = new THREE.Quaternion();
 
             return function () {
-                console.log(position);
+                //console.log(position);
                 document.getElementById("debug_text").innerHTML = position.z;
                 this.el.object3D.getWorldPosition(position);
                 this.el.object3D.getWorldQuaternion(quaternion);
 
                 if (position.z >= -2.2 && position.z <= -1.8) {
                     portalSound.play();
-                    changePos({ x: 0, y: 1.6, z: 10 });
+                    changeNether();
                 }
                 // position and rotation now contain vector and quaternion in world space.
             };
