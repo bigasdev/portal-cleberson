@@ -7,8 +7,12 @@ var nether = false;
 var exploded = false;
 const netherEntity = document.querySelector("#nether-entity");
 
+//Variaveis da fireball
+var fireballSpeed = 0.05;
+var fireballYSpeed = 0.008;
+
+//Funcao que vai mudar para o nether
 function changeNether() {
-    if(!nether)setTimeout(explodePortal, 2000);
     nether = true;
     console.log(netherEntity);
     netherEntity.setAttribute("visible", nether);
@@ -18,6 +22,19 @@ function changeNether() {
 function explodePortal(){
     document.querySelector("#portal_entity").setAttribute("visible", false);
     exploded= true;
+}
+
+//Funcao que vai mover a fireball
+function moveFireball(){
+    var fireball = document.querySelector("#fireball_entity");
+    var fireballPosition = fireball.getAttribute("position");
+    fireballPosition.y -= fireballYSpeed;
+    fireballPosition.z += fireballSpeed;
+    fireball.setAttribute("position", fireballPosition);
+
+    if(fireballPosition.z >= -3){
+        explodePortal();
+    }
 }
 
 function start() {
@@ -35,6 +52,7 @@ function start() {
                 document.getElementById("debug_text").innerHTML = position.z;
                 this.el.object3D.getWorldPosition(position);
                 this.el.object3D.getWorldQuaternion(quaternion);
+                if(nether)moveFireball();
 
                 if (position.z >= -2.2 && position.z <= -1.8 && !exploded) {
                     portalSound.play();
