@@ -4,16 +4,31 @@
         <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     </head>
     <body>
-        <h1 id="cam_pos">Test</h1>
         <a-scene portal>
+            <!-- Definindo o asset do portal -->
+            <a-assets>
+                <img id="portalTexture" src="portal.png" />
+            </a-assets>
+
             <a-camera
                 id="camera"
-                position="0 0 0"
+                position="0 1.6 0"
                 look-controls
                 wasd-controls
             ></a-camera>
-            <a-box position="0 0 1" scale="2 2 0.2" color="blue"></a-box>
-            <a-box position="0 0 -3" scale="2 2 0.2" color="red"></a-box>
+            <a-box
+                position="0 0 -2"
+                scale="3 3 0.2"
+                color="#ffffff"
+                material="side: double; src: #portalTexture; transparent: true; opacity: 0.8;"
+            ></a-box>
+
+            <a-box
+                position="0 0 -6"
+                scale="3 3 0.2"
+                color="#ffffff"
+                material="side: double; src: #portalTexture; transparent: true; opacity: 0.8;"
+            ></a-box>
         </a-scene>
         <script src="app.js"></script>
     </body>
