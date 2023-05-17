@@ -20,6 +20,7 @@ function start() {
 
             return function () {
                 console.log(position);
+                document.getElementById("debug_text").innerHTML = position.z;
                 this.el.object3D.getWorldPosition(position);
                 this.el.object3D.getWorldQuaternion(quaternion);
 
