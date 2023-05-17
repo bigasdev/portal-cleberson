@@ -1,43 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-        <script src="https://raw.githack.com/aframevr/aframe-mobile-controls/v0.2.4/dist/aframe-mobile-controls.min.js"></script>
+        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     </head>
     <body>
-        <a-scene vr-mode-ui="enabled: true">
-            <a-entity
-                id="portalEntrance"
-                geometry="primitive: box; width: 2; height: 2; depth: 0.2"
-                material="color: blue"
-                position="-3 1 -5"
-                portal-destination="#portalDestination"
-            ></a-entity>
-
-            <a-entity
-                id="portalDestination"
-                geometry="primitive: box; width: 2; height: 2; depth: 0.2"
-                material="color: red"
-                position="3 1 -5"
-                portal-destination="#portalEntrance"
-            ></a-entity>
-
-            <a-entity camera mobile-controls look-controls></a-entity>
+        <a-scene portal>
+            <a-camera position="0 0 0" look-controls wasd-controls></a-camera>
+            <a-box position="0 0 -5" scale="2 2 0.2" color="blue"></a-box>
+            <a-box position="0 0 -8" scale="2 2 0.2" color="red"></a-box>
         </a-scene>
-
-        <script>
-            AFRAME.registerComponent("portal-destination", {
-                init: function () {
-                    const el = this.el;
-                    el.addEventListener("click", function () {
-                        const destination =
-                            el.getAttribute("portal-destination");
-                        if (destination) {
-                            window.location.href = destination;
-                        }
-                    });
-                },
-            });
-        </script>
     </body>
 </html>
