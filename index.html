@@ -4,10 +4,17 @@
         <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     </head>
     <body>
+        <h1 id="cam_pos">Test</h1>
         <a-scene portal>
-            <a-camera position="0 0 0" look-controls wasd-controls></a-camera>
+            <a-camera
+                id="camera"
+                position="0 0 0"
+                look-controls
+                wasd-controls
+            ></a-camera>
             <a-box position="0 0 1" scale="2 2 0.2" color="blue"></a-box>
             <a-box position="0 0 -3" scale="2 2 0.2" color="red"></a-box>
         </a-scene>
+        <script src="app.js"></script>
     </body>
 </html>
