@@ -20,7 +20,9 @@ function changeNether() {
 
 //Funcao que vai remover o portal e fazer som da fireball apos X segundos
 function explodePortal(){
+    if(exploded)return;
     document.querySelector("#portal_entity").setAttribute("visible", false);
+    ghastSound.play();
     exploded= true;
 }
 
@@ -49,7 +51,7 @@ function start() {
 
             return function () {
                 //console.log(position);
-                document.getElementById("debug_text").innerHTML = position.z;
+                //document.getElementById("debug_text").innerHTML = position.z;
                 this.el.object3D.getWorldPosition(position);
                 this.el.object3D.getWorldQuaternion(quaternion);
                 if(nether)moveFireball();
