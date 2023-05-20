@@ -2,19 +2,32 @@
 <html>
     <head>
         <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+        <script src="https://cdn.rawgit.com/elbobo/aframe-multisrc-component/b6d23310/dist/0.3/aframe-multisrc-component.js"></script>
     </head>
     <body>
         <a-scene portal>
             <!-- Definindo os assets do projeto -->
             <a-assets>
                 <img id="portalTexture" src="portal.png" />
-                <img id="ghast" src="ghast.jpg" />
+                <img id="ghast" src="64flor.png" />
                 <img id="nether" src="nether.png" />
+                <img id="cara" src="Cara.png" />
+                <img id="ladoE" src="LadoE.png" />
+                <img id="ladoD" src="LadoD.png" />
+                <img id="bunda" src="Bunda.png" />
             </a-assets>
 
             <a-entity htmlembed position="0 0 -5">
                 <h1 id="debug_text">An Example</h1>
             </a-entity>
+
+            <a-box
+                position="0 0 -5"
+                multisrc="srcs:#ladoD,#ladoE,#cara,#cara,#cara,#bunda"
+                scale="1 1 1"
+                color="white"
+                shadow
+            ></a-box>
 
             <a-entity id="nether-entity" visible="false">
                 <a-box
